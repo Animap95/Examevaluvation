@@ -1,0 +1,43 @@
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
+                    <ul class="navbar-nav">
+                        {% if user.is_authenticated %}
+                        <li><a class="nav-link" href="{% url 'examapp:home' %}">Home</a></li>
+                        <li><a class="nav-link" href="#">Profile</a></li>
+<!--                        <li class="nav-item dropdown">-->
+<!--                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                                Branches-->
+<!--                            </a>-->
+<!--                            <ul class="dropdown-menu">-->
+<!--                                {% for branch in branches %}-->
+<!--                                    <li><a class="dropdown-item" href="{{branch.link}}">{{branch.name}}</a></li>-->
+<!--                                {% endfor %}-->
+<!--                            </ul>-->
+<!--                        </li>-->
+                        <li><a class="nav-link" href="{% url 'bankapp:logout' %}">Logout</a></li>
+                        {% else %}
+                            <li><a class="nav-link {% block home %}{% endblock %}" href="{% url 'examapp:home' %}">Home</a></li>
+                            <li><a class="nav-link {% block login %}{% endblock %}" href="{% url 'examapp:custom_login' %}">Login</a></li>
+                            <li><a class="nav-link {% block register %}{% endblock %}" href="{% url 'examapp:register' %}">Register</a></li>
+<!--                            <li class="nav-item dropdown">-->
+<!--                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                                    Branches-->
+<!--                                </a>-->
+<!--                                <ul class="dropdown-menu">-->
+<!--                                    {% for branch in branches %}-->
+<!--                                        <li><a class="dropdown-item" href="{{branch.link}}">{{branch.name}}</a></li>-->
+<!--                                    {% endfor %}-->
+<!--                                </ul>-->
+<!--                            </li>-->
+                        {% endif %}
+                    </ul>
+
+
+    </div>
+  </div>
+</nav>
